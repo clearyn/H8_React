@@ -1,0 +1,48 @@
+.my-clock {
+  text-align: center;
+  height: 150px;
+  width: 400px;
+  border-radius: 125px;
+  margin-top: 5px;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #88dfff;
+}
+
+.time {
+  color: white;
+  font-size: 70px;
+  position: relative;
+  display: block;
+  margin-top: 0px;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shadowFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.blink {
+  animation: blinking 1.5s infinite
+}
