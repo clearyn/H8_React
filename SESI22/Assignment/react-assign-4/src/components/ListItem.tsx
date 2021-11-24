@@ -1,17 +1,10 @@
 import { useState, useEffect } from 'react'
+import { Articles } from './ArticleInterface';
+import { Link } from "react-router-dom";
 import configData from "../config.json";
 import '../components/Article.css'
 
 export default function ListItem(): JSX.Element {
-    interface Article {
-        body: string;
-        date: string;
-        id: number;
-        title: string;
-    }
-
-    interface Articles extends Array<Article> { }
-
     const [baseURL] = useState(configData.BASE_PROXY)
     const [articles, setArticles] = useState<Articles>([])
 
@@ -25,25 +18,28 @@ export default function ListItem(): JSX.Element {
     }, [])
 
     return (
-        <div>
-            <ul className="tilesWrap">
-                {
-                    articles.map((artilce, index) => (
+        <>
+            <div>
+                <ul className="tilesWrap">
+                    <h2 className="text-white">Hover article to show button</h2>
+                    {
+                        articles.map((artilce, index) => (
 
-                        <li>
-                            <h2>0{index + 1}</h2>
-                            <h3>{artilce.title}</h3>
-                            <p>
-                                {artilce.body}
-                            </p>
-                            <p>
-                                {new Date(artilce.date).toDateString()}
-                            </p>
-                            <button>Read more</button>
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
+                            <li key={index}>
+                                <h2>0{index + 1}</h2>
+                                <h3>{artilce.title}</h3>
+                                <p>
+                                    {artilce.body}
+                                </p>
+                                <p>
+                                    {new Date(artilce.date).toDateString()}
+                                </p>
+                                <Link to="api"><button>API Result</button></Link>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </>
     )
 }

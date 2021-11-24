@@ -24,6 +24,19 @@
   color: white;
 }
 
+.text-white {
+  color: white;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.pre{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 .App-link {
   color: #61dafb;
 }
