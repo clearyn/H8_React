@@ -3,10 +3,44 @@ import './App.css';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import { myCounter } from './store';
+import {
+  useDispatch, //Melempar action
+  useSelector// Mengambil state dari store
+} from 'react-redux'
 
 function App() {
+  const state = useSelector((state:myCounter) => state.counter)
+  const dispatch = useDispatch()
+
+  const incrementCounter = () => {
+    dispatch({
+      type: "INCREMENT"
+    })
+  }
+
+  const decrementCounter = () => {
+    dispatch({
+      type: "DECREMENT"
+    })
+  }
+
+  const customIncrement = (value = 10) => {
+    dispatch({
+      type: "SET_COUNTER",
+      payload: state! + value
+    })
+  }
+
   return (
     <div className="App">
+      <div>
+        <h3>Counter Time</h3>
+        <h3>{state}</h3>
+        <button id="decrement" onClick={decrementCounter}>-</button>
+        <button id="increment" onClick={incrementCounter}>+</button>
+        <button id="custom" onClick={() => customIncrement(25)}>+25</button>
+      </div>
       <BrowserRouter>
         <Link to="/">Home</Link> |&nbsp;
         <Link to="/about">About</Link> |&nbsp;
@@ -41,7 +75,7 @@ function Abouts(): JSX.Element {
 
   return (
     <>
-      <h1>Who do you want to see { name }?</h1>
+      <h1>Who do you want to see {name}?</h1>
       <h3>Please select a name :</h3>
       <ul>
         <li> <Link to={`${location.pathname}/fulan`}>Fulan</Link></li>
