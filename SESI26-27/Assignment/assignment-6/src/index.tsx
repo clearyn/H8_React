@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Redux
+import { Provider } from 'react-redux'
+import kanbanStore from './redux/stores/kanban';
 import "bootstrap";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 //css
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@assets/css/offcanvas.css';
 
 //js
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -16,7 +19,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={kanbanStore}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
